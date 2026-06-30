@@ -1,0 +1,20 @@
+# Minimal local-training dependencies for Apple Silicon.
+# TensorFlow is intentionally omitted to avoid duplicating a large install.
+numpy==1.26.4
+pandas
+opencv-python==4.11.0.86
+Pillow
+matplotlib
+seaborn
+scikit-learn
+pydicom
+tqdm
+mlxtend==0.22.0
+scipy
+scikit-image
+kaggle
+torch
+torchvision
+torchxrayvision
+captum
+grad-cam

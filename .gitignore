@@ -1,0 +1,69 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pycache-test/
+
+# Virtual environments
+venv/
+.venv/
+.venv*/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+.env.*
+
+# Build/distribution
+build/
+dist/
+*.egg-info/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files — recursive pattern catches nested .DS_Store files too
+**/.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# ── Dataset (large / not for version control) ──────────────────────────────
+# RSNA Pneumonia Detection Challenge raw data (~3.7 GB)
+rsna-pneumonia-detection-challenge/
+
+# Raw DICOM images (safety net if dataset is reorganised)
+*.dcm
+
+# Large raw label / submission CSVs (re-downloadable from Kaggle)
+stage_2_train_labels.csv
+stage_2_detailed_class_info.csv
+stage_2_sample_submission.csv
+
+# ── Generated / experiment artifacts ────────────────────────────────────────
+data/raw/
+outputs/
+xai_pneumonia/outputs/
+xai_pneumonia/model/history.json
+
+# Feature caches produced during training runs
+feature_cache*/
+
+# ── Model weights (large binary files) ──────────────────────────────────────
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Python compiled files (duplicate guard)
+*.pyc
+
+# ── Credentials ─────────────────────────────────────────────────────────────
+kaggle.json
+*.msi
