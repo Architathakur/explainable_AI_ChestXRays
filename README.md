@@ -385,71 +385,6 @@ This generates:
 
 ---
 
-## Main Notebook
-
-The main notebook is:
-
-```text
-xai_pneumonia/notebooks/full_pipeline.ipynb
-```
-
-Important:
-
-This notebook mostly reflects the older ResNet50/TensorFlow pipeline. It is still useful for:
-
-- Environment checks
-- Dataset exploration
-- Data split verification
-- Preprocessing visualization
-- Understanding the original workflow
-- Seeing the conceptual XAI/evaluation flow
-
-For the final implementation, use the script-based DenseNet/PyTorch commands above.
-
-A detailed cell-by-cell explanation is available in:
-
-```text
-CODEBASE_AND_NOTEBOOK_GUIDE.md
-```
-
----
-
-## Project Documentation
-
-Additional study and interview-preparation documents:
-
-| Document | Purpose |
-|---|---|
-| `PROJECT_INTERVIEW_GUIDE.md` | Full A-Z explanation of the project, pipeline, results, and interview talking points |
-| `BEGINNER_CONCEPTS_AND_INTERVIEW_ANSWERS.md` | Beginner-friendly explanation of concepts, methods, and likely interview questions |
-| `CODEBASE_AND_NOTEBOOK_GUIDE.md` | Explains what every major file does and what notebook blocks do |
-| `CODEX_CHANGES.md` | Log of implementation changes made during the final setup |
-
----
-
-## What Was Changed During Final Setup
-
-Major final setup work included:
-
-- Created `.venv-train`.
-- Updated Mac training requirements.
-- Made TensorFlow imports lazy so PyTorch-only code can run without the old TensorFlow stack.
-- Fixed package imports for the DenseNet/PyTorch path.
-- Updated DenseNet training defaults.
-- Added feature caching to `outputs/feature_cache/`.
-- Implemented balanced focal MLP training.
-- Added threshold tuning metrics.
-- Implemented DenseNet/PyTorch Grad-CAM.
-- Implemented DenseNet/PyTorch Grad-CAM++.
-- Implemented Captum Integrated Gradients.
-- Added XAI case figures.
-- Added quantitative XAI evaluation.
-- Saved final figures to `outputs/figures/`.
-
-See `CODEX_CHANGES.md` for the full change log.
-
----
-
 ## Historical Experiments
 
 Several other model ideas were explored before settling on the final DenseNet/PyTorch pipeline.
@@ -486,14 +421,6 @@ Short fine-tuning of DenseNet layers was explored, but it did not meaningfully i
 ### MIL / Attention Experiments
 
 Spatial MIL and attention-based approaches were explored for better localization. They were useful conceptually, but the final reproducible pipeline is the frozen DenseNet encoder plus MLP head.
-
----
-
-## Interview Summary
-
-A concise way to explain the project:
-
-> I built a pneumonia classification and explainability pipeline using the RSNA chest X-ray dataset. The final model uses a frozen TorchXRayVision DenseNet121 encoder pretrained on chest X-ray data and a PyTorch MLP head trained with balanced focal loss. I cached DenseNet features to make training faster on a MacBook, tuned the classification threshold for best validation F1, and implemented Grad-CAM, Grad-CAM++, and Integrated Gradients to explain predictions. I also quantitatively compared XAI methods using localization IoU against RSNA bounding boxes, runtime, and consistency.
 
 ---
 
